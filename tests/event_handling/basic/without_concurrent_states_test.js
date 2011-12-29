@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC */
 
@@ -9,18 +9,18 @@ var statechart = null;
 // CONTENT CHANGING
 // 
 
-module("SC.Statechart: No Concurrent States - Send Event Tests", {
+module("Ember.Statechart: No Concurrent States - Send Event Tests", {
   setup: function() {
 
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
         
         initialSubstate: 'a',
         
-        a: SC.State.extend({
+        a: Ember.State.extend({
         
           initialSubstate: 'c',
           
@@ -28,11 +28,11 @@ module("SC.Statechart: No Concurrent States - Send Event Tests", {
             this.gotoState('b');
           },
           
-          c: SC.State.extend({
+          c: Ember.State.extend({
             eventA: function() { this.gotoState('d'); }
           }),
           
-          d: SC.State.extend({
+          d: Ember.State.extend({
             sender: null,
             context: null,
             eventC: function(sender, context) {
@@ -44,13 +44,13 @@ module("SC.Statechart: No Concurrent States - Send Event Tests", {
           
         }),
         
-        b: SC.State.extend({
+        b: Ember.State.extend({
           
           initialSubstate: 'e',
           
-          e: SC.State.extend(),
+          e: Ember.State.extend(),
           
-          f: SC.State.extend()
+          f: Ember.State.extend()
           
         })
         

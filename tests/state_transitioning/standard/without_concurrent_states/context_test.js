@@ -15,10 +15,10 @@ var statechart,
     stateE,
     stateF;
 
-module("SC.Statechart: Supply Context Parameter to gotoState - Without Concurrent States", {
+module("Ember.Statechart: Supply Context Parameter to gotoState - Without Concurrent States", {
   setup: function() {
     
-    TestState = SC.State.extend({
+    TestState = Ember.State.extend({
       enterStateContext: null,
       exitStateContext: null,
       
@@ -31,7 +31,7 @@ module("SC.Statechart: Supply Context Parameter to gotoState - Without Concurren
       }
     });
     
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       

@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.State Unit Test
+// Ember.State Unit Test
 // ==========================================================================
 /*globals SC Obj1 Obj2 Obj3 */
 
@@ -9,23 +9,23 @@ window.Obj3 = null;
 var statechart1, statechart2, TestState;
 var stateA, stateB, stateC, stateD;
 
-module("SC.Statechart: stateObserves Tests", {
+module("Ember.Statechart: stateObserves Tests", {
 	
   setup: function() {
 
-    Obj1 = SC.Object.create({
+    Obj1 = Ember.Object.create({
       foo: 'abc'
     });
     
-    Obj2 = SC.Object.create({
+    Obj2 = Ember.Object.create({
       bar: 'xyz'
     });
     
-    Obj3 = SC.Object.create({
+    Obj3 = Ember.Object.create({
       mah: 123
     });
     
-    TestState = SC.State.extend({
+    TestState = Ember.State.extend({
       
       notifyStateObserveHandlerInvoked: function(handler, target, key) {
         this['%@Invoked'.fmt(handler)] = {
@@ -36,7 +36,7 @@ module("SC.Statechart: stateObserves Tests", {
       
     });
 
-    statechart1 = SC.Statechart.create({
+    statechart1 = Ember.Statechart.create({
 		
 		  autoInitStatechart: YES,
 		  
@@ -73,7 +73,7 @@ module("SC.Statechart: stateObserves Tests", {
     stateA = statechart1.getState('stateA');
     stateB = statechart1.getState('stateB');
     
-    statechart2 = SC.Statechart.create({
+    statechart2 = Ember.Statechart.create({
       
       autoInitStatechart: YES,
       

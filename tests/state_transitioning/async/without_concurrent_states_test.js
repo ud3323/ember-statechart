@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC */
 
@@ -9,7 +9,7 @@ var statechart = null;
 // CONTENT CHANGING
 // 
 
-module("SC.Statechart: No Concurrent States - Goto State Asynchronous Tests", {
+module("Ember.Statechart: No Concurrent States - Goto State Asynchronous Tests", {
   setup: function() {
     
     var StateMixin = {
@@ -30,17 +30,17 @@ module("SC.Statechart: No Concurrent States - Goto State Asynchronous Tests", {
       }
     };
   
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
         
         initialSubstate: 'a',
         
-        a: SC.State.extend(),
+        a: Ember.State.extend(),
         
-        b: SC.State.extend({
+        b: Ember.State.extend({
           
           methodInvoked: null,
           
@@ -62,15 +62,15 @@ module("SC.Statechart: No Concurrent States - Goto State Asynchronous Tests", {
           
         }),
         
-        c: SC.State.extend(StateMixin, {
+        c: Ember.State.extend(StateMixin, {
           
           initialSubstate: 'd',
           
-          d: SC.State.extend(StateMixin, {
+          d: Ember.State.extend(StateMixin, {
             
             initialSubstate: 'e',
             
-            e: SC.State.extend(StateMixin)
+            e: Ember.State.extend(StateMixin)
             
           })
           

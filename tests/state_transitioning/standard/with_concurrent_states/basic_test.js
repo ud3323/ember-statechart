@@ -6,27 +6,27 @@
 var statechart = null;
 var monitor, root, stateA, stateB, stateC, stateD, stateE, stateF;
 
-module("SC.Statechart: With Concurrent States - Goto State Basic Tests", {
+module("Ember.Statechart: With Concurrent States - Goto State Basic Tests", {
   setup: function() {
     
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
         
         substatesAreConcurrent: YES,
 
-        a: SC.State.extend({
+        a: Ember.State.extend({
           initialSubstate: 'c',
-          c: SC.State.extend(),
-          d: SC.State.extend()
+          c: Ember.State.extend(),
+          d: Ember.State.extend()
         }),
 
-        b: SC.State.extend({
+        b: Ember.State.extend({
           initialSubstate: 'e',
-          e: SC.State.extend(),
-          f: SC.State.extend()
+          e: Ember.State.extend(),
+          f: Ember.State.extend()
         })
       })
       

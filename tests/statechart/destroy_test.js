@@ -1,20 +1,20 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC statechart State */
 
 var obj, rootState, stateA, stateB;
 
-module("SC.Statechart: Destroy Statechart Tests", {
+module("Ember.Statechart: Destroy Statechart Tests", {
   setup: function() {
     
-    obj = SC.Object.create(SC.StatechartManager, {
+    obj = Ember.Object.create(Ember.StatechartManager, {
       
       initialState: 'stateA',
       
-      stateA: SC.State.extend(),
+      stateA: Ember.State.extend(),
       
-      stateB: SC.State.extend()
+      stateB: Ember.State.extend()
       
     });
     

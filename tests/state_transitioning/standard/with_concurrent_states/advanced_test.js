@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.State Unit Test
+// Ember.State Unit Test
 // ==========================================================================
 /*globals SC */
 
@@ -12,66 +12,66 @@ var stateQ, stateR, stateS, stateZ;
 // CONTENT CHANGING
 // 
 
-module("SC.Statechart: With Concurrent States - Goto State Advanced Tests", {
+module("Ember.Statechart: With Concurrent States - Goto State Advanced Tests", {
   setup: function() {
     
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
         
         initialSubstate: 'a',
 
-        a: SC.State.extend({
+        a: Ember.State.extend({
           substatesAreConcurrent: YES,
           
-          b: SC.State.extend({
+          b: Ember.State.extend({
             initialSubstate: 'd',
-            d: SC.State.extend(),
-            e: SC.State.extend()
+            d: Ember.State.extend(),
+            e: Ember.State.extend()
           }),
           
-          c: SC.State.extend({
+          c: Ember.State.extend({
             
             initialSubstate: 'f',
             
-            f: SC.State.extend({
+            f: Ember.State.extend({
               substatesAreConcurrent: YES,
 
-              h: SC.State.extend({
+              h: Ember.State.extend({
                 initialSubstate: 'l',
-                l: SC.State.extend(),
-                m: SC.State.extend()
+                l: Ember.State.extend(),
+                m: Ember.State.extend()
               }),
               
-              i: SC.State.extend({
+              i: Ember.State.extend({
                 initialSubstate: 'n',
-                n: SC.State.extend(),
-                o: SC.State.extend()
+                n: Ember.State.extend(),
+                o: Ember.State.extend()
               })
             }),
             
-            g: SC.State.extend({
+            g: Ember.State.extend({
               substatesAreConcurrent: YES,
 
-              j: SC.State.extend({
+              j: Ember.State.extend({
                 initialSubstate: 'p',
-                p: SC.State.extend(),
-                q: SC.State.extend()
+                p: Ember.State.extend(),
+                q: Ember.State.extend()
               }),
               
-              k: SC.State.extend({
+              k: Ember.State.extend({
                 initialSubstate: 'r',
-                r: SC.State.extend(),
-                s: SC.State.extend()
+                r: Ember.State.extend(),
+                s: Ember.State.extend()
               })
             })
           
           })
         }),
 
-        z: SC.State.extend()
+        z: Ember.State.extend()
       })
       
     });

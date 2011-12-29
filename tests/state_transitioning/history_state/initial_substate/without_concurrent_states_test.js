@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC statechart */
 
@@ -9,58 +9,58 @@ window.statechart = null;
 // CONTENT CHANGING
 // 
 
-module("SC.HistoryState - Without Concurrent States Tests", {
+module("Ember.HistoryState - Without Concurrent States Tests", {
   setup: function() {
    
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
       
         initialSubstate: 'a',
         
-        a: SC.State.extend({
+        a: Ember.State.extend({
           
-          initialSubstate: SC.HistoryState.extend({
+          initialSubstate: Ember.HistoryState.extend({
             defaultState: 'c'
           }),
           
-          c: SC.State.extend({
+          c: Ember.State.extend({
             initialSubstate: 'g',
             
-            g: SC.State.extend(),
-            h: SC.State.extend()
+            g: Ember.State.extend(),
+            h: Ember.State.extend()
           }),
           
-          d: SC.State.extend({
+          d: Ember.State.extend({
             initialSubstate: 'i',
             
-            i: SC.State.extend(),
-            j: SC.State.extend()
+            i: Ember.State.extend(),
+            j: Ember.State.extend()
           })
           
         }),
         
-        b: SC.State.extend({
+        b: Ember.State.extend({
           
-          initialSubstate: SC.HistoryState.extend({
+          initialSubstate: Ember.HistoryState.extend({
             isRecursive: YES,
             defaultState: 'e'
           }),
           
-          e: SC.State.extend({
+          e: Ember.State.extend({
             initialSubstate: 'k',
             
-            k: SC.State.extend(),
-            l: SC.State.extend()
+            k: Ember.State.extend(),
+            l: Ember.State.extend()
           }),
           
-          f: SC.State.extend({
+          f: Ember.State.extend({
             initialSubstate: 'm',
             
-            m: SC.State.extend(),
-            n: SC.State.extend()
+            m: Ember.State.extend(),
+            n: Ember.State.extend()
           })
           
         })
@@ -107,14 +107,14 @@ test("check initial substate after statechart init", function() {
   equals(e.get('initialSubstate'), k, "e state's initial substate should be state k");
   equals(f.get('initialSubstate'), m, "f state's initial substate should be state m");
 
-  equals(aInitSubstate instanceof SC.HistoryState, true, "a state's initial substate should be of type SC.HistoryState");
+  equals(aInitSubstate instanceof Ember.HistoryState, true, "a state's initial substate should be of type Ember.HistoryState");
   equals(aInitSubstate.get('isRecursive'), false, "a's initial substate should not be recursive");
   equals(aInitSubstate.get('defaultState'), c, "a's initial substate should have default state c");
   equals(aInitSubstate.get('statechart'), statechart, "a's initial substate should have an assigned statechart");
   equals(aInitSubstate.get('parentState'), a, "a's initial substate should have parent state a");
   equals(aInitSubstate.get('state'), c, "a's initial substate state should be state c");
 
-  equals(bInitSubstate instanceof SC.HistoryState, true, "b state's initial substate should be of type SC.HistoryState");
+  equals(bInitSubstate instanceof Ember.HistoryState, true, "b state's initial substate should be of type Ember.HistoryState");
   equals(bInitSubstate.get('isRecursive'), true, "b's initial substate should be recursive");
   equals(bInitSubstate.get('defaultState'), e, "b's initial substate should have default state e");
   equals(bInitSubstate.get('statechart'), statechart, "b's initial substate should have an assigned statechart");

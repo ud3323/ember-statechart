@@ -1,39 +1,39 @@
 // ==========================================================================
-// SC.State Unit Test
+// Ember.State Unit Test
 // ==========================================================================
 /*globals SC */
 
 var statechart = null;
 var monitor, root, stateA, stateB, stateC, stateD, stateE, stateF, stateG, stateZ;
 
-module("SC.Statechart: With Concurrent States - Goto State Intermediate Tests", {
+module("Ember.Statechart: With Concurrent States - Goto State Intermediate Tests", {
   setup: function() {
     
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
         
         initialSubstate: 'a',
 
-        a: SC.State.extend({
+        a: Ember.State.extend({
           substatesAreConcurrent: YES,
           
-          b: SC.State.extend({
+          b: Ember.State.extend({
             initialSubstate: 'd',
-            d: SC.State.extend(),
-            e: SC.State.extend()
+            d: Ember.State.extend(),
+            e: Ember.State.extend()
           }),
           
-          c: SC.State.extend({
+          c: Ember.State.extend({
             initialSubstate: 'f',
-            f: SC.State.extend(),
-            g: SC.State.extend()
+            f: Ember.State.extend(),
+            g: Ember.State.extend()
           })
         }),
 
-        z: SC.State.extend()
+        z: Ember.State.extend()
       })
       
     });

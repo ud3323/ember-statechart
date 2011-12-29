@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC */
 
@@ -9,43 +9,43 @@ var statechart;
 // CONTENT CHANGING
 // 
 
-module("SC.Statechart: No Concurrent States - Transient State Transition Tests", {
+module("Ember.Statechart: No Concurrent States - Transient State Transition Tests", {
   setup: function() {
 
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
         
         initialSubstate: 'a',
         
-        a: SC.State.extend({
+        a: Ember.State.extend({
         
           initialSubstate: 'b',
                     
-          b: SC.State.extend({
+          b: Ember.State.extend({
             eventC: function() { this.gotoState('c'); },
             eventD: function() { this.gotoState('d'); },
             eventE: function() { this.gotoState('e'); },
             eventX: function() { this.gotoState('x'); }
           }),
           
-          c: SC.State.extend({
+          c: Ember.State.extend({
             enterState: function() { this.gotoState('z'); }
           }),
           
-          d: SC.State.extend({
+          d: Ember.State.extend({
             enterState: function() { this.gotoState('c'); }
           }),
           
-          e: SC.State.extend({
+          e: Ember.State.extend({
             enterState: function() { this.gotoState('f'); }
           }),
           
-          f: SC.State.extend(),
+          f: Ember.State.extend(),
           
-          g: SC.State.extend({
+          g: Ember.State.extend({
             
             initialSubstate: 'x',
             
@@ -55,17 +55,17 @@ module("SC.Statechart: No Concurrent States - Transient State Transition Tests",
               return this.performAsync('foo');
             },
             
-            x: SC.State.extend({
+            x: Ember.State.extend({
               enterState: function() { this.gotoState('h'); }
             })
   
           }),
           
-          h: SC.State.extend()
+          h: Ember.State.extend()
           
         }),
         
-        z: SC.State.extend()
+        z: Ember.State.extend()
         
       })
       

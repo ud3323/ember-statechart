@@ -1,12 +1,12 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC TestState */
 
 TestState = null;
 var obj, MixinA, MixinB, stateA, stateB, stateC;
 
-module("SC.State.plugin: Mixin Tests", {
+module("Ember.State.plugin: Mixin Tests", {
   setup: function() {
     
     MixinA = {
@@ -17,19 +17,19 @@ module("SC.State.plugin: Mixin Tests", {
       isMixinB: YES
     };
 
-    TestState = SC.State.extend({
+    TestState = Ember.State.extend({
       isTestState: YES
     });
 
-    obj = SC.Object.create(SC.StatechartManager, {
+    obj = Ember.Object.create(Ember.StatechartManager, {
       
       initialState: 'stateA',
       
-      stateA: SC.State.plugin('TestState'),
+      stateA: Ember.State.plugin('TestState'),
       
-      stateB: SC.State.plugin('TestState', MixinA),
+      stateB: Ember.State.plugin('TestState', MixinA),
       
-      stateC: SC.State.plugin('TestState', MixinA, MixinB)
+      stateC: Ember.State.plugin('TestState', MixinA, MixinB)
       
     });
     

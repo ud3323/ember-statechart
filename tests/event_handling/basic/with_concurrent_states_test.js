@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC */
 
@@ -9,22 +9,22 @@ var statechart = null;
 // CONTENT CHANGING
 // 
 
-module("SC.Statechart: With Concurrent States - Send Event Tests", {
+module("Ember.Statechart: With Concurrent States - Send Event Tests", {
   setup: function() {
 
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
         
         initialSubstate: 'x',
         
-        x: SC.State.extend({
+        x: Ember.State.extend({
           
           substatesAreConcurrent: YES,
           
-          a: SC.State.extend({
+          a: Ember.State.extend({
 
             initialSubstate: 'c',
 
@@ -32,18 +32,18 @@ module("SC.Statechart: With Concurrent States - Send Event Tests", {
 
             eventA: function() { this.set('eventAInvoked', YES); },
 
-            c: SC.State.extend({
+            c: Ember.State.extend({
               eventB: function() { this.gotoState('d'); },
               eventD: function() { this.gotoState('y'); }
             }),
 
-            d: SC.State.extend({
+            d: Ember.State.extend({
               eventC: function() { this.gotoState('c'); }
             })
 
           }),
 
-          b: SC.State.extend({
+          b: Ember.State.extend({
 
             initialSubstate: 'e',
 
@@ -51,12 +51,12 @@ module("SC.Statechart: With Concurrent States - Send Event Tests", {
 
             eventA: function() { this.set('eventAInvoked', YES); },
 
-            e: SC.State.extend({
+            e: Ember.State.extend({
               eventB: function() { this.gotoState('f'); },
               eventD: function() { this.gotoState('y'); }
             }),
 
-            f: SC.State.extend({
+            f: Ember.State.extend({
               eventC: function() { this.gotoState('e'); }
             })
 
@@ -64,7 +64,7 @@ module("SC.Statechart: With Concurrent States - Send Event Tests", {
           
         }),
         
-        y: SC.State.extend()
+        y: Ember.State.extend()
         
       })
       

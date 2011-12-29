@@ -9,36 +9,36 @@ var statechart = null;
 // CONTENT CHANGING
 // 
 
-module("SC.Statechart: With Concurrent States - Goto History State Tests", {
+module("Ember.Statechart: With Concurrent States - Goto History State Tests", {
   setup: function() {
     
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
         
         initialSubstate: 'x',
         
-        x: SC.State.extend({
+        x: Ember.State.extend({
                 
           substatesAreConcurrent: YES,
           
-          a: SC.State.extend({
+          a: Ember.State.extend({
             initialSubstate: 'c',
-            c: SC.State.extend(),
-            d: SC.State.extend()
+            c: Ember.State.extend(),
+            d: Ember.State.extend()
           }),
 
-          b: SC.State.extend({
+          b: Ember.State.extend({
             initialSubstate: 'e',
-            e: SC.State.extend(),
-            f: SC.State.extend()
+            e: Ember.State.extend(),
+            f: Ember.State.extend()
           })
           
         }),
 
-        z: SC.State.extend()
+        z: Ember.State.extend()
         
       })
       

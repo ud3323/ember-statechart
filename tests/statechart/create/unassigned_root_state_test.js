@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC statechart State */
 
@@ -9,21 +9,21 @@ var obj3, rootState3, stateE, rootStateExample;
 var obj4;
 var owner;
 
-module("SC.Statechart: Create Statechart with Unassigned Root State Tests", {
+module("Ember.Statechart: Create Statechart with Unassigned Root State Tests", {
   setup: function() {
-    owner = SC.Object.create();
+    owner = Ember.Object.create();
     
-    obj1 = SC.Object.extend(SC.StatechartManager, {
+    obj1 = Ember.Object.extend(Ember.StatechartManager, {
       
       initialState: 'stateA',
       
-      stateA: SC.State.extend({
+      stateA: Ember.State.extend({
         foo: function() {
           this.gotoState('stateB');
         }
       }),
       
-      stateB: SC.State.extend({
+      stateB: Ember.State.extend({
         bar: function() {
           this.gotoState('stateA');
         }
@@ -36,17 +36,17 @@ module("SC.Statechart: Create Statechart with Unassigned Root State Tests", {
     stateA = obj1.getState('stateA');
     stateB = obj1.getState('stateB');  
     
-    obj2 = SC.Object.extend(SC.StatechartManager, {
+    obj2 = Ember.Object.extend(Ember.StatechartManager, {
       
       statesAreConcurrent: YES,
       
-      stateC: SC.State.extend({
+      stateC: Ember.State.extend({
         foo: function() {
           this.gotoState('stateD');
         }
       }),
       
-      stateD: SC.State.extend({
+      stateD: Ember.State.extend({
         bar: function() {
           this.gotoState('stateC');
         }
@@ -59,24 +59,24 @@ module("SC.Statechart: Create Statechart with Unassigned Root State Tests", {
     stateC = obj2.getState('stateC');
     stateD = obj2.getState('stateD');  
     
-    rootStateExample = SC.State.extend({ test: 'foo' });
+    rootStateExample = Ember.State.extend({ test: 'foo' });
     
-    obj3 = SC.Object.extend(SC.StatechartManager, {
+    obj3 = Ember.Object.extend(Ember.StatechartManager, {
       owner: owner,
       initialState: 'stateE',
       rootStateExample: rootStateExample,
-      stateE: SC.State.extend()
+      stateE: Ember.State.extend()
     });
     
     obj3 = obj3.create();
     rootState3 = obj3.get('rootState');
     stateE = obj3.getState('stateE');
     
-    obj4 = SC.Object.extend(SC.StatechartManager, {
+    obj4 = Ember.Object.extend(Ember.StatechartManager, {
       autoInitStatechart: NO,
       initialState: 'stateF',
       rootStateExample: rootStateExample,
-      stateF: SC.State.extend()
+      stateF: Ember.State.extend()
     });
     
     obj4 = obj4.create();
@@ -93,7 +93,7 @@ module("SC.Statechart: Create Statechart with Unassigned Root State Tests", {
 test("check obj1 statechart", function() {
   ok(obj1.get('isStatechart'), "obj should be a statechart");
   ok(obj1.get('statechartIsInitialized'), "obj should be an initialized statechart");
-  ok(rootState1 instanceof SC.State, "root state should be kind of SC.State");
+  ok(rootState1 instanceof Ember.State, "root state should be kind of Ember.State");
   ok(!rootState1.get('substateAreConcurrent'), "root state's substates should not be concurrent");
   
   equals(obj1.get('initialState'), stateA, "obj's initialState should be state A");
@@ -117,7 +117,7 @@ test("check obj1 statechart", function() {
 test("check obj2 statechart", function() {
   ok(obj2.get('isStatechart'), "obj should be a statechart");
   ok(obj2.get('statechartIsInitialized'), "obj should be an initialized statechart");
-  ok(rootState2 instanceof SC.State, "root state should be kind of SC.State");
+  ok(rootState2 instanceof Ember.State, "root state should be kind of Ember.State");
   ok(rootState2.get('substatesAreConcurrent'), "root state's substates should be concurrent");
   
   equals(obj2.get('initialState'), null, "obj's initialState should be null");

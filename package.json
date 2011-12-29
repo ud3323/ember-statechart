@@ -1,18 +1,18 @@
 {
-  "name": "sproutcore-statechart",
-  "summary": "SproutCore Statecharts",
-  "description": "The SproutCore Statechart library",
-  "homepage": "http://sproutcore.com",
+  "name": "ember-statechart",
+  "summary": "Ember Statecharts",
+  "description": "The Ember Statechart library",
+  "homepage": "http://emberjs.com",
   "author": "Strobe Inc., Apple, Inc., and contributors",
-  "version": "2.0.beta.4",
+  "version": "0.9",
   "bpm": "1.0.0",
   "directories": {
     "lib": "lib"
   },
   "dependencies": {
     "spade": "~> 1.0",
-    "sproutcore-runtime": ">= 0",
-    "sproutcore-utils": "2.0.beta.3"
+    "ember-runtime": ">= 0",
+    "ember-utils": ">= 0"
   },
   "dependencies:development": {
     "spade-qunit": "~> 1.0.0"
@@ -24,7 +24,7 @@
       ],
       "modes": "*"
     },
-    "sproutcore-statechart/bpm_tests.js": {
+    "ember-statechart/bpm_tests.js": {
       "directories": [
         "tests"
       ],

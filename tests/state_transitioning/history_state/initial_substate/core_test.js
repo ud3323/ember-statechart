@@ -1,16 +1,16 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC */
 
 var statechart, stateA, stateB, stateC;
 
-module("SC.HistoryState Tests", {
+module("Ember.HistoryState Tests", {
   setup: function() {
-    statechart = SC.Statechart.create({initialState: 'a', a: SC.State.extend()});
-    stateA = SC.State.create({ name: 'stateA' });
-    stateB = SC.State.create({ name: 'stateB' });
-    stateC = SC.State.create({ name: 'stateC' });
+    statechart = Ember.Statechart.create({initialState: 'a', a: Ember.State.extend()});
+    stateA = Ember.State.create({ name: 'stateA' });
+    stateB = Ember.State.create({ name: 'stateB' });
+    stateC = Ember.State.create({ name: 'stateC' });
   },
   
   teardown: function() {
@@ -19,13 +19,13 @@ module("SC.HistoryState Tests", {
 });
 
 test("Check default history state", function() {
-  var historyState = SC.HistoryState.create();
+  var historyState = Ember.HistoryState.create();
   
   equals(historyState.get('isRecursive'), false);
 });
 
 test("Check assigned history state", function() {  
-  var historyState = SC.HistoryState.create({
+  var historyState = Ember.HistoryState.create({
     isRecursive: YES,
     statechart: statechart,
     parentState: stateA,

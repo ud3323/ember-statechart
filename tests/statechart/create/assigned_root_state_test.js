@@ -1,25 +1,25 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC statechart */
 
 var obj1, rootState1, stateA, stateB;
 var obj2;
 
-module("SC.Statechart: Create Statechart with Assigned Root State Tests", {
+module("Ember.Statechart: Create Statechart with Assigned Root State Tests", {
   setup: function() {
-    obj1 = SC.Object.extend(SC.StatechartManager, {
-      rootState: SC.State.extend({
+    obj1 = Ember.Object.extend(Ember.StatechartManager, {
+      rootState: Ember.State.extend({
         
         initialSubstate: 'a',
         
-        a: SC.State.extend({
+        a: Ember.State.extend({
           foo: function() {
             this.gotoState('b');
           }
         }),
         
-        b: SC.State.extend({
+        b: Ember.State.extend({
           bar: function() {
             this.gotoState('a');
           }
@@ -33,9 +33,9 @@ module("SC.Statechart: Create Statechart with Assigned Root State Tests", {
     stateA = obj1.getState('a');
     stateB = obj1.getState('b');
     
-    obj2 = SC.Object.extend(SC.StatechartManager, {
+    obj2 = Ember.Object.extend(Ember.StatechartManager, {
       autoInitStatechart: NO,
-      rootState: SC.State.extend()
+      rootState: Ember.State.extend()
     });
     
     obj2 = obj2.create();
@@ -50,7 +50,7 @@ module("SC.Statechart: Create Statechart with Assigned Root State Tests", {
 test("check obj1", function() {
   ok(obj1.get('isStatechart'), "obj should be statechart");
   ok(obj1.get('statechartIsInitialized'), "obj should be an initialized statechart");
-  ok(rootState1 instanceof SC.State, "root state should be kind of SC.State");
+  ok(rootState1 instanceof Ember.State, "root state should be kind of Ember.State");
   equals(obj1.get('initialState'), null, "obj initialState should be null");
   
   ok(stateA.get('isCurrentState'), "state A should be current state");

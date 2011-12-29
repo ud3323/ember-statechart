@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC statechart */
 
@@ -9,9 +9,9 @@ var statechart, TestState, root, stateA, stateB, stateC, stateD, stateE, stateF,
 // CONTENT CHANGING
 // 
 
-module("SC.Statechart: - Respond to Actions Tests", {
+module("Ember.Statechart: - Respond to Actions Tests", {
   setup: function() {
-    TestState = SC.State.extend({
+    TestState = Ember.State.extend({
       returnValue: null,
       handledAction: NO,
       
@@ -26,7 +26,7 @@ module("SC.Statechart: - Respond to Actions Tests", {
       }
     });
     
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       someFunctionInvoked: NO,
       someFunctionReturnValue: null,

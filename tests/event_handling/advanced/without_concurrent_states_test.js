@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC */
 
@@ -12,7 +12,7 @@ var TestState = null;
 module("Ki.Statechart: No Concurrent States - Advanced Action Handling Tests", {
   setup: function() {
     
-    TestState = SC.State.extend({
+    TestState = Ember.State.extend({
       action: null,
       sender: null,
       context: null,
@@ -33,7 +33,7 @@ module("Ki.Statechart: No Concurrent States - Advanced Action Handling Tests", {
       }
     });
 
-    statechart1 = SC.Statechart.create({
+    statechart1 = Ember.Statechart.create({
       
       rootState: TestState.extend({
       
@@ -57,7 +57,7 @@ module("Ki.Statechart: No Concurrent States - Advanced Action Handling Tests", {
       
     });
     
-    statechart2 = SC.Statechart.create({
+    statechart2 = Ember.Statechart.create({
       
       rootState: TestState.extend({
         
@@ -69,7 +69,7 @@ module("Ki.Statechart: No Concurrent States - Advanced Action Handling Tests", {
       
     });
     
-    statechart3 = SC.Statechart.create({
+    statechart3 = Ember.Statechart.create({
       
       rootState: TestState.extend({
         
@@ -85,7 +85,7 @@ module("Ki.Statechart: No Concurrent States - Advanced Action Handling Tests", {
       
     });
     
-    statechart4 = SC.Statechart.create({
+    statechart4 = Ember.Statechart.create({
       
       rootState: TestState.extend({
         
@@ -153,8 +153,8 @@ module("Ki.Statechart: No Concurrent States - Advanced Action Handling Tests", {
 
 test("check statechart1 action handling", function() {
   var state = statechart1.get('rootState'),
-      sender = SC.Object.create(),
-      context = SC.Object.create();
+      sender = Ember.Object.create(),
+      context = Ember.Object.create();
   
   state.reset();
   statechart1.sendAction('foo', sender, context);
@@ -194,8 +194,8 @@ test("check statechart1 action handling", function() {
 
 test("check statechart2 action handling", function() {
   var state = statechart2.get('rootState'),
-      sender = SC.Object.create(),
-      context = SC.Object.create();
+      sender = Ember.Object.create(),
+      context = Ember.Object.create();
   
   state.reset();
   statechart2.sendAction('foo', sender, context);

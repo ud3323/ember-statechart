@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC */
 
@@ -9,49 +9,49 @@ var statechart = null;
 // CONTENT CHANGING
 // 
 
-module("SC.Statechart: No Concurrent States - Goto History State Tests", {
+module("Ember.Statechart: No Concurrent States - Goto History State Tests", {
   setup: function() {
 
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
         
         initialSubstate: 'a',
         
-        a: SC.State.extend({
+        a: Ember.State.extend({
         
           initialSubstate: 'c',
           
-          c: SC.State.extend({
+          c: Ember.State.extend({
             initialSubstate: 'g',
-            g: SC.State.extend(),
-            h: SC.State.extend()
+            g: Ember.State.extend(),
+            h: Ember.State.extend()
           }),
           
-          d: SC.State.extend({
+          d: Ember.State.extend({
             initialSubstate: 'i',
-            i: SC.State.extend(),
-            j: SC.State.extend()
+            i: Ember.State.extend(),
+            j: Ember.State.extend()
           })
           
         }),
         
-        b: SC.State.extend({
+        b: Ember.State.extend({
           
           initialSubstate: 'e',
           
-          e: SC.State.extend({
+          e: Ember.State.extend({
             initialSubstate: 'k',
-            k: SC.State.extend(),
-            l: SC.State.extend()
+            k: Ember.State.extend(),
+            l: Ember.State.extend()
           }),
           
-          f: SC.State.extend({
+          f: Ember.State.extend({
             initialSubstate: 'm',
-            m: SC.State.extend(),
-            n: SC.State.extend()
+            m: Ember.State.extend(),
+            n: Ember.State.extend()
           })
           
         })

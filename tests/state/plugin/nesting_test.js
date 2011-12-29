@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.State Unit Test
+// Ember.State Unit Test
 // ==========================================================================
 /*globals SC externalState1 externalState2 */
 
@@ -7,40 +7,40 @@ var statechart = null;
 externalState1 = null;
 externalState2 = null;
 
-module("SC.State.plugin: Nest States Tests", {
+module("Ember.State.plugin: Nest States Tests", {
   setup: function() {
     
-    externalState1 = SC.State.extend({
+    externalState1 = Ember.State.extend({
       
       message: 'external state 1'
       
     });
     
-    externalState2 = SC.State.extend({
+    externalState2 = Ember.State.extend({
       
       initialSubstate: 'd',
       
       message: 'external state 2',
       
-      d: SC.State.extend(),
+      d: Ember.State.extend(),
       
-      e: SC.State.plugin('externalState1')
+      e: Ember.State.plugin('externalState1')
       
     });
     
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
         
         initialSubstate: 'a',
         
-        a: SC.State.plugin('externalState1'),
+        a: Ember.State.plugin('externalState1'),
         
-        b: SC.State.plugin('externalState2'),
+        b: Ember.State.plugin('externalState2'),
         
-        c: SC.State.extend()
+        c: Ember.State.extend()
         
       })
       

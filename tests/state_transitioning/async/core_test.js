@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC */
 
@@ -9,9 +9,9 @@ var Obj, obj, async, func;
 // CONTENT CHANGING
 // 
 
-module("SC.Async Tests", {
+module("Ember.Async Tests", {
   setup: function() {
-    Obj = SC.Object.extend({
+    Obj = Ember.Object.extend({
       fooInvoked: NO,
       arg1: null,
       arg2: null,
@@ -29,9 +29,9 @@ module("SC.Async Tests", {
   }
 });
 
-test("test async - SC.Async.perform('foo')", function() {
-  async = SC.Async.perform('foo');
-  equals(async instanceof SC.Async, YES);
+test("test async - Ember.Async.perform('foo')", function() {
+  async = Ember.Async.perform('foo');
+  equals(async instanceof Ember.Async, YES);
   equals(async.get('func'), 'foo');
   equals(async.get('arg1'), null);
   equals(async.get('arg2'), null);
@@ -43,8 +43,8 @@ test("test async - SC.Async.perform('foo')", function() {
   equals(obj.get('arg2'), null);
 });
 
-test("test async - SC.Async.perform('foo', 'hello', 'world')", function() {  
-  async = SC.Async.perform('foo', 'hello', 'world');
+test("test async - Ember.Async.perform('foo', 'hello', 'world')", function() {  
+  async = Ember.Async.perform('foo', 'hello', 'world');
   equals(async.get('func'), 'foo');
   equals(async.get('arg1'), 'hello');
   equals(async.get('arg2'), 'world');
@@ -56,9 +56,9 @@ test("test async - SC.Async.perform('foo', 'hello', 'world')", function() {
   equals(obj.get('arg2'), 'world');
 });
 
-test("test async - SC.Async.perform(function() { ... })", function() {    
+test("test async - Ember.Async.perform(function() { ... })", function() {    
   func = function() { this.foo(); };
-  async = SC.Async.perform(func);
+  async = Ember.Async.perform(func);
   equals(async.get('func'), func);
   equals(async.get('arg1'), null);
   equals(async.get('arg2'), null);
@@ -70,9 +70,9 @@ test("test async - SC.Async.perform(function() { ... })", function() {
   equals(obj.get('arg2'), null);
 });
   
-test("test async - SC.Async.perform(function() { ... }, 'aaa', 'bbb')", function() {  
+test("test async - Ember.Async.perform(function() { ... }, 'aaa', 'bbb')", function() {  
   func = function(arg1, arg2) { this.foo(arg1, arg2); };
-  async = SC.Async.perform(func, 'aaa', 'bbb');
+  async = Ember.Async.perform(func, 'aaa', 'bbb');
   equals(async.get('func'), func);
   equals(async.get('arg1'), 'aaa');
   equals(async.get('arg2'), 'bbb');
@@ -84,8 +84,8 @@ test("test async - SC.Async.perform(function() { ... }, 'aaa', 'bbb')", function
   equals(obj.get('arg2'), 'bbb');
 });
 
-test("test async - SC.Async.perform('bar')", function() {  
-  async = SC.Async.perform('bar');
+test("test async - Ember.Async.perform('bar')", function() {  
+  async = Ember.Async.perform('bar');
   equals(async.get('func'), 'bar');
   
   obj = Obj.create();

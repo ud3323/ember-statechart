@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC statechart State */
 
@@ -7,9 +7,9 @@ var TestState;
 var obj1, rootState1, stateA, stateB;
 var obj2, rootState2, stateC, stateD;
 
-module("SC.Statechart: invokeStateMethod Tests", {
+module("Ember.Statechart: invokeStateMethod Tests", {
   setup: function() {
-    TestState = SC.State.extend({
+    TestState = Ember.State.extend({
       testInvokedCount: 0,
       arg1: undefined,
       arg2: undefined,
@@ -29,7 +29,7 @@ module("SC.Statechart: invokeStateMethod Tests", {
       }
     });
     
-    obj1 = SC.Object.extend(SC.StatechartManager, {
+    obj1 = Ember.Object.extend(Ember.StatechartManager, {
       
       initialState: 'stateA',
       
@@ -55,7 +55,7 @@ module("SC.Statechart: invokeStateMethod Tests", {
     stateA = obj1.getState('stateA');
     stateB = obj1.getState('stateB');
     
-    obj2 = SC.Object.extend(SC.StatechartManager, {
+    obj2 = Ember.Object.extend(Ember.StatechartManager, {
       
       statesAreConcurrent: YES,
       

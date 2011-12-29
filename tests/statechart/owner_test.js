@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC statechart State */
 
@@ -9,17 +9,17 @@ var obj3, rootState3, stateE, stateF;
 var owner, owner2;
 var TestObject, TestState;
 
-module("SC.Statechart: Change Statechart Owner Property Tests", {
+module("Ember.Statechart: Change Statechart Owner Property Tests", {
   setup: function() {
-    owner = SC.Object.create({
+    owner = Ember.Object.create({
       toString: function() { return "owner"; }
     });
     
-    owner2 = SC.Object.create({
+    owner2 = Ember.Object.create({
       toString: function() { return "owner2"; }
     });
     
-    TestState = SC.State.extend({
+    TestState = Ember.State.extend({
       accessedOwner: null,
       
       reset: function() {
@@ -31,7 +31,7 @@ module("SC.Statechart: Change Statechart Owner Property Tests", {
       }
     });
     
-    TestObject = SC.Object.extend(SC.StatechartManager, {
+    TestObject = Ember.Object.extend(Ember.StatechartManager, {
       render: function() {
         this.invokeStateMethod('render');
       }

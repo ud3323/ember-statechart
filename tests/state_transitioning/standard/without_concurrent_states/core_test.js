@@ -1,5 +1,5 @@
 // ==========================================================================
-// SC.Statechart Unit Test
+// Ember.Statechart Unit Test
 // ==========================================================================
 /*globals SC */
 
@@ -8,49 +8,49 @@ var root, stateA, stateB, stateC, stateD, stateE, stateF, stateG, stateH;
 var stateI, stateJ, stateK, stateL, stateM, stateN, monitor;
 var allState;
 
-module("SC.Statechart: No Concurrent States - Goto State Tests", {
+module("Ember.Statechart: No Concurrent States - Goto State Tests", {
   setup: function() {
 
-    statechart = SC.Statechart.create({
+    statechart = Ember.Statechart.create({
       
       monitorIsActive: YES,
       
-      rootState: SC.State.extend({
+      rootState: Ember.State.extend({
         
         initialSubstate: 'a',
         
-        a: SC.State.extend({
+        a: Ember.State.extend({
         
           initialSubstate: 'c',
           
-          c: SC.State.extend({
+          c: Ember.State.extend({
             initialSubstate: 'g',
-            g: SC.State.extend(),
-            h: SC.State.extend()
+            g: Ember.State.extend(),
+            h: Ember.State.extend()
           }),
           
-          d: SC.State.extend({
+          d: Ember.State.extend({
             initialSubstate: 'i',
-            i: SC.State.extend(),
-            j: SC.State.extend()
+            i: Ember.State.extend(),
+            j: Ember.State.extend()
           })
           
         }),
         
-        b: SC.State.extend({
+        b: Ember.State.extend({
           
           initialSubstate: 'e',
           
-          e: SC.State.extend({
+          e: Ember.State.extend({
             initialSubstate: 'k',
-            k: SC.State.extend(),
-            l: SC.State.extend()
+            k: Ember.State.extend(),
+            l: Ember.State.extend()
           }),
           
-          f: SC.State.extend({
+          f: Ember.State.extend({
             initialSubstate: 'm',
-            m: SC.State.extend(),
-            n: SC.State.extend()
+            m: Ember.State.extend(),
+            n: Ember.State.extend()
           })
           
         })
@@ -88,21 +88,21 @@ module("SC.Statechart: No Concurrent States - Goto State Tests", {
 });
 
 test("check statechart state objects", function() {
-  equals(SC.none(stateG), false, 'statechart should return a state object for state with name "g"');
+  equals(Ember.none(stateG), false, 'statechart should return a state object for state with name "g"');
   equals(stateG.get('stateName'), 'g', 'state g should have name "g"');
   equals(stateG.get('isCurrentState'), true, 'state G should be current state');
   equals(stateG.stateIsCurrentSubstate('g'), true, 'state g should have current substate g');
   equals(statechart.stateIsCurrentState('g'), true, 'statechart should have current state g');
   equals(statechart.stateIsCurrentState(stateG), true, 'statechart should have current state g');
   
-  equals(SC.none(stateM), false, 'statechart should return a state object for state with name "m"');
+  equals(Ember.none(stateM), false, 'statechart should return a state object for state with name "m"');
   equals(stateM.get('stateName'), 'm', 'state m should have name "m"');
   equals(stateM.get('isCurrentState'), false, 'state m should not be current state');
   equals(stateG.stateIsCurrentSubstate('m'), false, 'state m should not have current substate m');
   equals(statechart.stateIsCurrentState('m'), false, 'statechart should not have current state m');
   equals(statechart.stateIsCurrentState(stateM), false, 'statechart should not have current state m');
   
-  equals(SC.none(stateA), false, 'statechart should return a state object for state with name "a"');
+  equals(Ember.none(stateA), false, 'statechart should return a state object for state with name "a"');
   equals(stateA.get('isCurrentState'), false, 'state m should not be current state');
   equals(stateA.stateIsCurrentSubstate('a'), false, 'state a should not have current substate g');
   equals(stateA.stateIsCurrentSubstate('c'), false, 'state a should not have current substate c');
@@ -111,7 +111,7 @@ test("check statechart state objects", function() {
   equals(stateA.stateIsCurrentSubstate(stateM), false, 'state a should not have current substate m');
   
   var stateX = statechart.getState('x');
-  equals(SC.none(stateX), true, 'statechart should not have a state with name "x"');
+  equals(Ember.none(stateX), true, 'statechart should not have a state with name "x"');
 });
 
 test("check statechart initialization", function() {
