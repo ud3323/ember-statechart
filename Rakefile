@@ -36,40 +36,40 @@ SproutCore::Compiler.intermediate = "tmp/intermediate"
 SproutCore::Compiler.output = "tmp/static"
 
 def compile_statechart_task
-  js_tasks = SproutCore::Compiler::Preprocessors::JavaScriptTask.with_input "sproutcore-statechart/lib/**/*.js", ".."
-  SproutCore::Compiler::CombineTask.with_tasks js_tasks, "#{SproutCore::Compiler.intermediate}/sproutcore-statechart"
+  js_tasks = SproutCore::Compiler::Preprocessors::JavaScriptTask.with_input "ember-statechart/lib/**/*.js", ".."
+  SproutCore::Compiler::CombineTask.with_tasks js_tasks, "#{SproutCore::Compiler.intermediate}/ember-statechart"
 end
 
 task :compile_statechart_task => compile_statechart_task
 
 task :build => [:compile_statechart_task]
 
-file "dist/sproutcore-statechart.js" => :build do
-  puts "Generating sproutcore-statechart.js"
+file "dist/ember-statechart.js" => :build do
+  puts "Generating ember-statechart.js"
   
   mkdir_p "dist"
   
-  File.open("dist/sproutcore-statechart.js", "w") do |file|
-    file.puts strip_require("tmp/static/sproutcore-statechart.js")
+  File.open("dist/ember-statechart.js", "w") do |file|
+    file.puts strip_require("tmp/static/ember-statechart.js")
   end
 end
 
-# Minify dist/sproutcore-statechart.js to dist/sproutcore-statechart.min.js
-file "dist/sproutcore-statechart.min.js" => "dist/sproutcore-statechart.js" do
-  puts "Generating sproutcore-statechart.min.js"
+# Minify dist/ember-statechart.js to dist/ember-statechart.min.js
+file "dist/ember-statechart.min.js" => "dist/ember-statechart.js" do
+  puts "Generating ember-statechart.min.js"
   
-  File.open("dist/sproutcore-statechart.prod.js", "w") do |file|
-    file.puts strip_sc_assert("dist/sproutcore-statechart.js")
+  File.open("dist/ember-statechart.prod.js", "w") do |file|
+    file.puts strip_sc_assert("dist/ember-statechart.js")
   end
   
-  File.open("dist/sproutcore-statechart.min.js", "w") do |file|
-    file.puts uglify("dist/sproutcore-statechart.prod.js")
+  File.open("dist/ember-statechart.min.js", "w") do |file|
+    file.puts uglify("dist/ember-statechart.prod.js")
   end
-  rm "dist/sproutcore-statechart.prod.js"
+  rm "dist/ember-statechart.prod.js"
 end
 
 desc "Build SproutCore Statecharts"
-task :dist => ["dist/sproutcore-statechart.min.js"]
+task :dist => ["dist/ember-statechart.min.js"]
 
 desc "Clean artifacts from previous builds"
 task :clean do
